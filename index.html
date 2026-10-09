@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I'm Sorry, Eiza & Zara 💗</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;min-height:100vh;padding:24px 14px;
+ display:flex;align-items:center;justify-content:center;
+ font-family:"Trebuchet MS",sans-serif;
+ background:linear-gradient(135deg,#ffe3ee,#f8d9ff,#fff0f5);
+ color:#793c60;overflow-x:hidden
+}
+.card{
+ width:100%;max-width:440px;padding:30px 22px;
+ text-align:center;background:#ffffffdc;border:2px solid white;
+ border-radius:28px;box-shadow:0 15px 45px #bf5b912c;
+ position:relative;z-index:2;
+ animation:appear 1s ease
+}
+@keyframes appear{
+ from{opacity:0;transform:translateY(18px)}
+ to{opacity:1;transform:translateY(0)}
+}
+.emoji{font-size:55px;animation:beat 1.5s infinite}
+@keyframes beat{50%{transform:scale(1.1)}}
+h1{font-size:31px;color:#d64e8b;margin:12px 0}
+h2{color:#d64e8b}
+.subtitle{font-size:15px;line-height:1.8;color:#96647d}
+.message{
+ text-align:left;background:#fff1f7;border-radius:18px;
+ padding:18px;margin:22px 0;font-size:15px;line-height:1.9
+}
+button{
+ border:0;border-radius:30px;padding:14px 18px;
+ background:#e65b98;color:white;font-size:15px;
+ font-weight:bold;font-family:inherit;cursor:pointer;
+ box-shadow:0 6px 16px #e65b9844;
+ max-width:100%
+}
+button:active{transform:scale(.96)}
+.personal{
+ display:none;padding:17px;margin:16px 0;
+ border-radius:18px;line-height:1.9;
+ animation:appear .6s ease
+}
+#eiza{background:#ffeaf3}
+#zara{background:#fff0df}
+.signature{margin-top:24px;font-size:14px;color:#bb7197}
+.small{font-size:12px;color:#b27c98;margin-top:16px}
+.heart{
+ position:fixed;bottom:-30px;pointer-events:none;z-index:1;
+ animation:floatUp linear forwards
+}
+@keyframes floatUp{
+ to{transform:translateY(-115vh) rotate(35deg);opacity:0}
+}
+</style>
+</head>
+<body>
+<main class="card">
+ <div class="emoji">🥺💗</div>
+ <h1>I'm Sorry, Eiza & Zara</h1>
+ <p class="subtitle">To my two special besties... 💌</p>
+
+ <section class="message">
+  Hey Eiza and Zara, 💗<br><br>
+  I don't know how to put everything into words,
+  but I want you both to know that I'm truly sorry. 🥹<br><br>
+  I never wanted to hurt either of you. Your friendship
+  means so much to me, and the thought of us not being
+  okay makes me sad.<br><br>
+  I know saying sorry cannot magically fix everything,
+  but I genuinely wish I could make things right.
+  Our friendship is precious to me, and I don't want
+  a mistake to erase our beautiful memories.<br><br>
+  I'm not asking you to forget what happened or to
+  forgive me before you're ready. I just hope you'll
+  give me a chance to make things better. 🫂
+ </section>
+
+ <p class="subtitle">
+  I made a little surprise for each of you.
+  Tap below to open your personal message. 🎁
+ </p>
+
+ <button id="openBtn" onclick="showSurprise()">
+  Open your surprise 🎁
+ </button>
+
+ <section id="surprise" style="display:none;margin-top:22px">
+  <div style="font-size:40px">🧸💖</div>
+  <h2>Two Special Besties</h2>
+  <p class="subtitle">Choose your own little message! 💌</p>
+
+  <button onclick="showMessage('eiza')">
+   Eiza, forgive me? 🎀
+  </button>
+
+  <div id="eiza" class="personal">
+   <h3>Dear Eiza 💗</h3>
+   I'm really sorry if I hurt you. 🥺
+   Your friendship means so much to me, and I never
+   wanted to make you sad. I miss being okay with you,
+   and I hope we can make beautiful memories again.
+   You are special to me! 🫂💖
+  </div>
+
+  <br><br>
+
+  <button onclick="showMessage('zara')">
+   Zara, forgive me? 🧸
+  </button>
+
+  <div id="zara" class="personal">
+   <h3>Dear Zara 🌷</h3>
+   I'm truly sorry. 🥹💕 I never wanted to hurt you
+   or make things difficult between us. Our friendship
+   matters to me, and I hope you know how much I care.
+   When you're ready, I'd love for us to talk and make
+   things better. Sending you a big hug! 🫂💗
+  </div>
+
+  <p style="color:#d64e8b;font-weight:bold;line-height:1.8">
+   Two special girls, two special places in my heart. 💌
+  </p>
+ </section>
+
+ <div class="signature">Made with a sorry heart and lots of love ♡</div>
+ <div class="small">Our friendship matters to me. 🎀</div>
+</main>
+
+<script>
+function showSurprise(){
+ document.getElementById("surprise").style.display="block";
+ const btn=document.getElementById("openBtn");
+ btn.textContent="Your surprises are waiting 💕";
+ btn.disabled=true;
+ btn.style.opacity=".8";
+ document.getElementById("surprise").scrollIntoView({
+  behavior:"smooth",block:"nearest"
+ });
+ for(let i=0;i<18;i++)setTimeout(createHeart,i*100);
+}
+function showMessage(name){
+ const el=document.getElementById(name);
+ el.style.display="block";
+ el.scrollIntoView({behavior:"smooth",block:"nearest"});
+ for(let i=0;i<12;i++)setTimeout(createHeart,i*120);
+}
+function createHeart(){
+ const heart=document.createElement("div");
+ heart.className="heart";
+ const items=["💗","💕","💖","♡","🌸"];
+ heart.textContent=items[Math.floor(Math.random()*items.length)];
+ heart.style.left=Math.random()*100+"vw";
+ heart.style.fontSize=(16+Math.random()*18)+"px";
+ heart.style.animationDuration=(3+Math.random()*3)+"s";
+ document.body.appendChild(heart);
+ setTimeout(()=>heart.remove(),6500);
+}
+setInterval(createHeart,1400);
+</script>
+</body>
+   </html>
+   
